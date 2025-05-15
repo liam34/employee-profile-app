@@ -17,9 +17,17 @@ model Employee {
   photoUrl    String? // Optional field for an image URL
 }
 
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {

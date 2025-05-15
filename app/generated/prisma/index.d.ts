@@ -21,7 +21,7 @@ export type Employee = $Result.DefaultSelection<Prisma.$EmployeePayload>
 
 /**
  * ##  Prisma Client ʲˢ
- *
+ * 
  * Type-safe database client for TypeScript & Node.js
  * @example
  * ```
@@ -30,7 +30,7 @@ export type Employee = $Result.DefaultSelection<Prisma.$EmployeePayload>
  * const employees = await prisma.employee.findMany()
  * ```
  *
- *
+ * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
  */
 export class PrismaClient<
@@ -42,7 +42,7 @@ export class PrismaClient<
 
     /**
    * ##  Prisma Client ʲˢ
-   *
+   * 
    * Type-safe database client for TypeScript & Node.js
    * @example
    * ```
@@ -51,12 +51,12 @@ export class PrismaClient<
    * const employees = await prisma.employee.findMany()
    * ```
    *
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): void;
 
   /**
    * Connect with the database
@@ -81,7 +81,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -93,7 +93,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
@@ -104,7 +104,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -116,7 +116,7 @@ export class PrismaClient<
    * ```
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
-   *
+   * 
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
@@ -140,9 +140,7 @@ export class PrismaClient<
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
 
-  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
-    extArgs: ExtArgs
-  }>>
+  $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb, ExtArgs>
 
       /**
    * `prisma.employee`: Exposes CRUD operations for the **Employee** model.
@@ -152,7 +150,7 @@ export class PrismaClient<
     * const employees = await prisma.employee.findMany()
     * ```
     */
-  get employee(): Prisma.EmployeeDelegate<ExtArgs, ClientOptions>;
+  get employee(): Prisma.EmployeeDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -173,6 +171,7 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
+  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -193,7 +192,7 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
+   * Metrics 
    */
   export type Metrics = runtime.Metrics
   export type Metric<T> = runtime.Metric<T>
@@ -211,14 +210,14 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 5.22.0
+   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
    */
   export type PrismaVersion = {
     client: string
   }
 
-  export const prismaVersion: PrismaVersion
+  export const prismaVersion: PrismaVersion 
 
   /**
    * Utility Types
@@ -234,15 +233,15 @@ export namespace Prisma {
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   namespace NullTypes {
     /**
     * Type of `Prisma.DbNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.DbNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class DbNull {
@@ -252,9 +251,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.JsonNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.JsonNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class JsonNull {
@@ -264,9 +263,9 @@ export namespace Prisma {
 
     /**
     * Type of `Prisma.AnyNull`.
-    *
+    * 
     * You cannot use other instances of this class. Please use the `Prisma.AnyNull` value.
-    *
+    * 
     * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
     */
     class AnyNull {
@@ -277,21 +276,21 @@ export namespace Prisma {
 
   /**
    * Helper for filtering JSON entries that have `null` on the database (empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const DbNull: NullTypes.DbNull
 
   /**
    * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const JsonNull: NullTypes.JsonNull
 
   /**
    * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
-   *
+   * 
    * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
    */
   export const AnyNull: NullTypes.AnyNull
@@ -479,7 +478,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+      | {[P in keyof O as P extends K ? K : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -603,14 +602,11 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs, clientOptions: PrismaClientOptions }, $Utils.Record<string, any>> {
+    returns: Prisma.TypeMap<this['params']['extArgs'], this['params']['clientOptions']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
-    globalOmitOptions: {
-      omit: GlobalOmitOptions
-    }
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
       modelProps: "employee"
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -667,10 +663,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.EmployeeUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.EmployeeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EmployeePayload>[]
           }
           upsert: {
             args: Prisma.EmployeeUpsertArgs<ExtArgs>
@@ -757,25 +749,8 @@ export namespace Prisma {
       timeout?: number
       isolationLevel?: Prisma.TransactionIsolationLevel
     }
-    /**
-     * Global configuration for omitting model fields by default.
-     * 
-     * @example
-     * ```
-     * const prisma = new PrismaClient({
-     *   omit: {
-     *     user: {
-     *       password: true
-     *     }
-     *   }
-     * })
-     * ```
-     */
-    omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {
-    employee?: EmployeeOmit
-  }
+
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -816,7 +791,6 @@ export namespace Prisma {
     | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
-    | 'updateManyAndReturn'
     | 'upsert'
     | 'delete'
     | 'deleteMany'
@@ -1079,18 +1053,6 @@ export namespace Prisma {
     photoUrl?: boolean
   }, ExtArgs["result"]["employee"]>
 
-  export type EmployeeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    name?: boolean
-    email?: boolean
-    position?: boolean
-    department?: boolean
-    startDate?: boolean
-    photoUrl?: boolean
-  }, ExtArgs["result"]["employee"]>
-
   export type EmployeeSelectScalar = {
     id?: boolean
     createdAt?: boolean
@@ -1103,7 +1065,6 @@ export namespace Prisma {
     photoUrl?: boolean
   }
 
-  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "email" | "position" | "department" | "startDate" | "photoUrl", ExtArgs["result"]["employee"]>
 
   export type $EmployeePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Employee"
@@ -1124,12 +1085,12 @@ export namespace Prisma {
 
   type EmployeeGetPayload<S extends boolean | null | undefined | EmployeeDefaultArgs> = $Result.GetResult<Prisma.$EmployeePayload, S>
 
-  type EmployeeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<EmployeeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type EmployeeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<EmployeeFindManyArgs, 'select' | 'include' | 'distinct'> & {
       select?: EmployeeCountAggregateInputType | true
     }
 
-  export interface EmployeeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  export interface EmployeeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Employee'], meta: { name: 'Employee' } }
     /**
      * Find zero or one Employee that matches the filter.
@@ -1142,10 +1103,10 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends EmployeeFindUniqueArgs>(args: SelectSubset<T, EmployeeFindUniqueArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends EmployeeFindUniqueArgs>(args: SelectSubset<T, EmployeeFindUniqueArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one Employee that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Employee that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
      * @param {EmployeeFindUniqueOrThrowArgs} args - Arguments to find a Employee
      * @example
@@ -1156,7 +1117,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends EmployeeFindUniqueOrThrowArgs>(args: SelectSubset<T, EmployeeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends EmployeeFindUniqueOrThrowArgs>(args: SelectSubset<T, EmployeeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
      * Find the first Employee that matches the filter.
@@ -1171,7 +1132,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends EmployeeFindFirstArgs>(args?: SelectSubset<T, EmployeeFindFirstArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends EmployeeFindFirstArgs>(args?: SelectSubset<T, EmployeeFindFirstArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
      * Find the first Employee that matches the filter or
@@ -1187,7 +1148,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends EmployeeFindFirstOrThrowArgs>(args?: SelectSubset<T, EmployeeFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends EmployeeFindFirstOrThrowArgs>(args?: SelectSubset<T, EmployeeFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
      * Find zero or more Employees that matches the filter.
@@ -1205,7 +1166,7 @@ export namespace Prisma {
      * const employeeWithIdOnly = await prisma.employee.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends EmployeeFindManyArgs>(args?: SelectSubset<T, EmployeeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends EmployeeFindManyArgs>(args?: SelectSubset<T, EmployeeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findMany">>
 
     /**
      * Create a Employee.
@@ -1219,7 +1180,7 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends EmployeeCreateArgs>(args: SelectSubset<T, EmployeeCreateArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends EmployeeCreateArgs>(args: SelectSubset<T, EmployeeCreateArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
      * Create many Employees.
@@ -1247,7 +1208,7 @@ export namespace Prisma {
      * })
      * 
      * // Create many Employees and only return the `id`
-     * const employeeWithIdOnly = await prisma.employee.createManyAndReturn({
+     * const employeeWithIdOnly = await prisma.employee.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1257,7 +1218,7 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends EmployeeCreateManyAndReturnArgs>(args?: SelectSubset<T, EmployeeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends EmployeeCreateManyAndReturnArgs>(args?: SelectSubset<T, EmployeeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
      * Delete a Employee.
@@ -1271,7 +1232,7 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends EmployeeDeleteArgs>(args: SelectSubset<T, EmployeeDeleteArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends EmployeeDeleteArgs>(args: SelectSubset<T, EmployeeDeleteArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
      * Update one Employee.
@@ -1288,7 +1249,7 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends EmployeeUpdateArgs>(args: SelectSubset<T, EmployeeUpdateArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends EmployeeUpdateArgs>(args: SelectSubset<T, EmployeeUpdateArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
      * Delete zero or more Employees.
@@ -1324,36 +1285,6 @@ export namespace Prisma {
     updateMany<T extends EmployeeUpdateManyArgs>(args: SelectSubset<T, EmployeeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Employees and returns the data updated in the database.
-     * @param {EmployeeUpdateManyAndReturnArgs} args - Arguments to update many Employees.
-     * @example
-     * // Update many Employees
-     * const employee = await prisma.employee.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Employees and only return the `id`
-     * const employeeWithIdOnly = await prisma.employee.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends EmployeeUpdateManyAndReturnArgs>(args: SelectSubset<T, EmployeeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Create or update one Employee.
      * @param {EmployeeUpsertArgs} args - Arguments to update or create a Employee.
      * @example
@@ -1370,7 +1301,7 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends EmployeeUpsertArgs>(args: SelectSubset<T, EmployeeUpsertArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends EmployeeUpsertArgs>(args: SelectSubset<T, EmployeeUpsertArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
@@ -1510,7 +1441,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__EmployeeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__EmployeeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1539,7 +1470,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Employee model
-   */
+   */ 
   interface EmployeeFieldRefs {
     readonly id: FieldRef<"Employee", 'String'>
     readonly createdAt: FieldRef<"Employee", 'DateTime'>
@@ -1563,10 +1494,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * Filter, which Employee to fetch.
      */
     where: EmployeeWhereUniqueInput
@@ -1581,10 +1508,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * Filter, which Employee to fetch.
      */
     where: EmployeeWhereUniqueInput
@@ -1598,10 +1521,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Employee
      */
     select?: EmployeeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
     /**
      * Filter, which Employee to fetch.
      */
@@ -1647,10 +1566,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * Filter, which Employee to fetch.
      */
     where?: EmployeeWhereInput
@@ -1695,10 +1610,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * Filter, which Employees to fetch.
      */
     where?: EmployeeWhereInput
@@ -1738,10 +1649,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * The data needed to create a Employee.
      */
     data: XOR<EmployeeCreateInput, EmployeeUncheckedCreateInput>
@@ -1767,10 +1674,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * The data used to create many Employees.
      */
     data: EmployeeCreateManyInput | EmployeeCreateManyInput[]
@@ -1785,10 +1688,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Employee
      */
     select?: EmployeeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
     /**
      * The data needed to update a Employee.
      */
@@ -1811,36 +1710,6 @@ export namespace Prisma {
      * Filter which Employees to update
      */
     where?: EmployeeWhereInput
-    /**
-     * Limit how many Employees to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Employee updateManyAndReturn
-   */
-  export type EmployeeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Employee
-     */
-    select?: EmployeeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
-     * The data used to update Employees.
-     */
-    data: XOR<EmployeeUpdateManyMutationInput, EmployeeUncheckedUpdateManyInput>
-    /**
-     * Filter which Employees to update
-     */
-    where?: EmployeeWhereInput
-    /**
-     * Limit how many Employees to update.
-     */
-    limit?: number
   }
 
   /**
@@ -1851,10 +1720,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Employee
      */
     select?: EmployeeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
     /**
      * The filter to search for the Employee to update in case it exists.
      */
@@ -1878,10 +1743,6 @@ export namespace Prisma {
      */
     select?: EmployeeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
-    /**
      * Filter which Employee to delete.
      */
     where: EmployeeWhereUniqueInput
@@ -1895,10 +1756,6 @@ export namespace Prisma {
      * Filter which Employees to delete
      */
     where?: EmployeeWhereInput
-    /**
-     * Limit how many Employees to delete.
-     */
-    limit?: number
   }
 
   /**
@@ -1909,10 +1766,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Employee
      */
     select?: EmployeeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Employee
-     */
-    omit?: EmployeeOmit<ExtArgs> | null
   }
 
 
@@ -1970,7 +1823,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references
+   * Field references 
    */
 
 
@@ -2429,6 +2282,14 @@ export namespace Prisma {
   }
 
 
+
+  /**
+   * Aliases for legacy arg types
+   */
+    /**
+     * @deprecated Use EmployeeDefaultArgs instead
+     */
+    export type EmployeeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EmployeeDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
